@@ -23,6 +23,14 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
   end
   
+  def email_params
+    params.require(:session).permit(:email)
+  end
+  
+  def password_params
+    params.require(:session).permit(:password)
+  end
+  
   def log_out
     session.delete(:user_id)
     @current_user = nil
