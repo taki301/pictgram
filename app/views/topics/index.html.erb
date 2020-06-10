@@ -14,13 +14,27 @@
               <% end %>
             <% else %>
               <%= link_to favorites_path(topic_id: topic.id), method: :delete do %>
-                <i class="far fa-heart topic-index-icon-unlike"></i>
+                <i class="fas fa-heart topic-index-icon-unlike"></i>
               <% end %>
             <% end %>
-            <%= image_tag 'images/icons/comment.png', class: 'topic-index-icon' %>
+            <%= topic.favorites.count %>
+            
+            <% if logged_in? %>
+              <%= link_to new_comment_path(topic_id: topic.id) do %>
+                <%= image_tag 'images/icons/comment.png', class: 'topic-index-icon' %>
+              <% end %>
+              <%= link_to topic_path(topic), method: :delete do %>
+                <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
+              <% end %>
+            <% end %>
             <p class="topic-text">
               <%= topic.description %>
             </p>
+            <hr>
+            <h3>コメント</h3>
+            <% topic.comments.each do |comment| %>
+              <p><%= comment.content %></p>
+            <% end %>
           </div>
         </div>
       </div>

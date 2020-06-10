@@ -20,6 +20,20 @@ class TopicsController < ApplicationController
     end
   end
   
+  def index
+    @topics = Topic.limit(10).order('created_at DESC')
+  end
+  
+  def destroy
+    @topic = Topic.find_by(id: params[:id])
+    if @topic.user == current_user
+      flash[:notice] = "投稿が削除されました" if @topic.destroy
+    else
+      flash[:alert] = "投稿の削除に失敗しました"
+    end
+    redirect_to topics_path
+  end
+  
   private
   def topic_params
     params.require(:topic).permit(:image, :description)

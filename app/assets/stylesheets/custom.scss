@@ -56,7 +56,7 @@ h1, h2 {
   background-size: cover;
   background-color: #464646;
   
-  .user-new-container {
+  .users-new-container {
     padding-top: 220px;
     
     .form-group {
@@ -142,12 +142,14 @@ h1, h2 {
       height: 30px;
       margin-left: 20px;
       color: #808080;
+      font-size: 30px;
     }
     .topic-index-icon-unlike {
       width: 35px;
       height: 30px;
       margin-left: 20px;
       color: #e54747;
+      font-size: 30px;
     }
   }
 }
