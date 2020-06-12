@@ -21,7 +21,7 @@ class TopicsController < ApplicationController
   end
   
   def index
-    @topics = Topic.limit(10).order('created_at DESC')
+    @topics = Topic.order('created_at DESC')
   end
   
   def destroy
