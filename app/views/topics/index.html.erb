@@ -23,8 +23,10 @@
               <%= link_to new_comment_path(topic_id: topic.id) do %>
                 <%= image_tag 'images/icons/comment.png', class: 'topic-index-icon' %>
               <% end %>
-              <%= link_to topic_path(topic), method: :delete do %>
-                <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
+              <% if topic.user == current_user %>
+                <%= link_to topic_path(topic), method: :delete do %>
+                  <span class="glyphicon glyphicon-trash" aria-hidden="true" style="font-size:20px;"></span>
+                <% end %>
               <% end %>
             <% end %>
             <p class="topic-text">
