@@ -21,7 +21,7 @@ class TopicsController < ApplicationController
   end
   
   def index
-    @topics = Topic.order('created_at DESC')
+    @topics = Topic.all.order(created_at: :desc).page(params[:page]).per(10)
   end
   
   def destroy
